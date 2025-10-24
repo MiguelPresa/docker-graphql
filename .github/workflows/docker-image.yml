@@ -29,11 +29,13 @@ jobs:
       run: |
         echo "Construyendo el docker..."
         docker build -t ${{secrets.DOCKER_USER}}/docker-graphql:0.0.2 .
+        docker build -t ${{secrets.DOCKER_USER}}/docker-graphql .
         echo "Construccion finalizada..."
     - name: Push Docker Image
       run: |
         echo "Subiendo la imagen..."
         docker push ${{secrets.DOCKER_USER}}/docker-graphql:0.0.2
+        docker push ${{secrets.DOCKER_USER}}/docker-graphql
         
     # - name: Build the Docker image
     #   run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
